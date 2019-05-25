@@ -1,13 +1,17 @@
+import "@atlaskit/css-reset";
+
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
+
+import Column from "./column";
 import React from "react";
 import ReactDOM from "react-dom";
 import initialData from "./initial-data";
-import Column from "./column";
-import "@atlaskit/css-reset";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import styled from "styled-components";
 
 const Container = styled.div`
+  width: 100%;
   display: flex;
+  justify-content: center;
 `;
 class InnerList extends React.PureComponent {
   // shouldComponentUpdate(nextProps) {

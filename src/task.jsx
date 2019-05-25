@@ -1,24 +1,28 @@
+import { Draggable } from "react-beautiful-dnd";
 import React from "react";
 import styled from "styled-components";
-import { Draggable } from "react-beautiful-dnd";
 
 const Container = styled.div`
-    border: 1px solid lightgrey;
-    border-radius: 2px
-    padding: 8px;
-    margin-bottom: 8px;
-    background-color: ${props =>
-      props.isDragDisabled
-        ? "lightgrey"
-        : props.isDragging
-        ? "white"
-        : "white"};
-    box-shadow: ${props =>
-      props.isDragging
-        ? "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)"
-        : "none"};
-    transition: box-shadow 0.2s ease;
-    display: flex;
+  /* border: 1px solid #dc3030; */
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 8px;
+  background: #FCE8E8;
+  color: ${props => (props.type === "BUG" ? "#dc3030" : "#3183C8")};
+  background: ${props => (props.type === "BUG" ? "#FCE8E8" : "#EFF8FF")};
+  font-weight: bold;
+  /* background-color: ${props =>
+    props.isDragDisabled
+      ? "lightgrey"
+      : props.isDragging
+      ? "white"
+      : "white"}; */
+  box-shadow: ${props =>
+    props.isDragging
+      ? "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)"
+      : "none"};
+  transition: box-shadow 0.2s ease;
+  display: flex;
 `;
 const Handle = styled.div`
   width: 20px;
@@ -44,6 +48,7 @@ export default class Task extends React.Component {
             isDragging={snapshot.isDragging}
             isDragDisabled={isDragDisabled}
             aria-roledescription="Press space bar to lift the task"
+            type={this.props.task.type}
           >
             {/* <Handle {...provided.dragHandleProps} /> */}
             {this.props.task.content}
