@@ -1,20 +1,8 @@
-workflow "Deploy on Now" {
+workflow "New workflow" {
   on = "push"
-  resolves = ["alias"]
+  resolves = ["ESLint"]
 }
 
-action "deploy" {
-  uses = "actions/zeit-now@master"
-  secrets = [
-    "CkDWZh8kq0my0ov9Sn3jvemu",
-  ]
-}
-
-action "alias" {
-  needs = ["deploy"]
-  uses = "actions/zeit-now@master"
-  args = "alias"
-  secrets = [
-    "CkDWZh8kq0my0ov9Sn3jvemu",
-  ]
+action "ESLint" {
+  uses = "stefanoeb/eslint-action@master"
 }
